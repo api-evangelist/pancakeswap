@@ -1,259 +1,261 @@
 name: PancakeSwap
-description: >
-  PancakeSwap is the largest decentralized exchange (DEX) on BNB Chain, operating
-  across ten blockchains including Ethereum, Arbitrum, Base, Solana, zkSync, Linea,
-  Polygon zkEVM, opBNB, and Aptos. It provides REST and GraphQL APIs for accessing
+description: 'PancakeSwap is the largest decentralized exchange (DEX) on BNB Chain,
+  operating across ten blockchains including Ethereum, Arbitrum, Base, Solana, zkSync,
+  Linea, Polygon zkEVM, opBNB, and Aptos. It provides REST and GraphQL APIs for accessing
   token prices, liquidity pool data, swap routing, farm yields, trading pair statistics,
   NFT market data, and prediction markets. Developers can query on-chain data via
   hosted subgraphs on The Graph Protocol and NodeReal.
+
+  '
 image: https://pancakeswap.finance/logo.png
 tags:
-  - DeFi
-  - DEX
-  - BNB Chain
-  - Decentralized Exchange
-  - Blockchain
-  - Swap
-  - Liquidity
-  - Yield Farming
-  - NFT
-  - Web3
-created: "2026-06-13"
-modified: "2026-06-13"
+- DeFi
+- DEX
+- BNB Chain
+- Decentralized Exchange
+- Blockchain
+- Swap
+- Liquidity
+- Yield Farming
+- NFT
+- Web3
+created: '2026-06-13'
+modified: '2026-06-13'
 url: https://raw.githubusercontent.com/api-evangelist/pancakeswap/refs/heads/main/apis.yml
-specificationVersion: "0.19"
+specificationVersion: '0.19'
 apis:
-  - name: PancakeSwap Info API v2
-    description: >
-      REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs,
-      tokens, and market summaries sourced from underlying subgraphs. Used by market
-      aggregators such as CoinMarketCap to surface liquidity and volume data.
-      Responses are cached for 5 minutes.
-    image: https://pancakeswap.finance/logo.png
-    humanURL: https://github.com/pancakeswap/pancake-info-api
-    baseURL: https://api.pancakeswap.info
-    tags:
-      - Tokens
-      - Pairs
-      - Liquidity
-      - Prices
-      - Volume
-    properties:
-      - type: Documentation
-        url: https://github.com/pancakeswap/pancake-info-api/blob/develop/v2-documentation.md
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/pancakeswap/refs/heads/main/openapi/openapi.yml
-    contact:
-      - FN: PancakeSwap
-        url: https://pancakeswap.finance
-        email: ""
+- name: PancakeSwap Info API v2
+  description: 'REST API providing on-chain data for the top ~1000 PancakeSwap trading
+    pairs, tokens, and market summaries sourced from underlying subgraphs. Used by
+    market aggregators such as CoinMarketCap to surface liquidity and volume data.
+    Responses are cached for 5 minutes.
 
-  - name: PancakeSwap Exchange V2 Subgraph (BSC)
-    description: >
-      GraphQL subgraph for querying PancakeSwap V2 exchange data on BNB Smart Chain,
-      including swaps, liquidity pools, trading pairs, volume, and price history.
-      Hosted on NodeReal MegaNode API Marketplace.
-    image: https://pancakeswap.finance/logo.png
-    humanURL: https://nodereal.io/meganode/api-marketplace/pancakeswap-graphql
-    baseURL: https://nodereal.io/meganode/api-marketplace/pancakeswap-graphql
-    tags:
-      - GraphQL
-      - Subgraph
-      - BNB Chain
-      - Exchange V2
-      - Liquidity Pools
-    properties:
-      - type: Documentation
-        url: https://docs.pancakeswap.finance/chinese/gei-kai-fa-zhe-men/api/subgraph
-      - type: X-Subgraph
-        url: https://nodereal.io/meganode/api-marketplace/pancakeswap-graphql
-    contact:
-      - FN: PancakeSwap
-        url: https://pancakeswap.finance
-
-  - name: PancakeSwap Exchange V2 Subgraph (Ethereum)
-    description: >
-      GraphQL subgraph for querying PancakeSwap V2 exchange data on Ethereum mainnet,
-      including swaps, liquidity pools, pairs, and historical volume data hosted on
-      The Graph decentralized network.
-    image: https://pancakeswap.finance/logo.png
-    humanURL: https://api.thegraph.com/subgraphs/name/pancakeswap/exhange-eth
-    baseURL: https://api.thegraph.com/subgraphs/name/pancakeswap/exhange-eth
-    tags:
-      - GraphQL
-      - Subgraph
-      - Ethereum
-      - Exchange V2
-    properties:
-      - type: Documentation
-        url: https://docs.pancakeswap.finance/chinese/gei-kai-fa-zhe-men/api/subgraph
-    contact:
-      - FN: PancakeSwap
-        url: https://pancakeswap.finance
-
-  - name: PancakeSwap Exchange V3 Subgraph (BSC)
-    description: >
-      GraphQL subgraph for querying PancakeSwap V3 concentrated liquidity exchange
-      data on BNB Smart Chain, including positions, pools, ticks, swaps, and fee tiers.
-      Hosted on The Graph and NodeReal.
-    image: https://pancakeswap.finance/logo.png
-    humanURL: https://thegraph.com/explorer/subgraphs/78EUqzJmEVJsAKvWghn7qotf9LVGqcTQxJhT5z84ZmgJ
-    baseURL: https://thegraph.com/explorer/subgraphs/78EUqzJmEVJsAKvWghn7qotf9LVGqcTQxJhT5z84ZmgJ
-    tags:
-      - GraphQL
-      - Subgraph
-      - BNB Chain
-      - Exchange V3
-      - Concentrated Liquidity
-    properties:
-      - type: Documentation
-        url: https://developer.pancakeswap.finance/apis/subgraph
-    contact:
-      - FN: PancakeSwap
-        url: https://pancakeswap.finance
-
-  - name: PancakeSwap Exchange V3 Subgraph (Ethereum)
-    description: >
-      GraphQL subgraph for querying PancakeSwap V3 concentrated liquidity exchange
-      data on Ethereum mainnet, including positions, pools, swaps, and historical
-      volume data hosted on The Graph decentralized network.
-    image: https://pancakeswap.finance/logo.png
-    humanURL: https://thegraph.com/explorer/subgraphs/9opY17WnEPD4REcC43yHycQthSeUMQE26wyoeMjZTLEx
-    baseURL: https://thegraph.com/explorer/subgraphs/9opY17WnEPD4REcC43yHycQthSeUMQE26wyoeMjZTLEx
-    tags:
-      - GraphQL
-      - Subgraph
-      - Ethereum
-      - Exchange V3
-      - Concentrated Liquidity
-    properties:
-      - type: Documentation
-        url: https://developer.pancakeswap.finance/apis/subgraph
-    contact:
-      - FN: PancakeSwap
-        url: https://pancakeswap.finance
-
-  - name: PancakeSwap StableSwap Subgraph (BSC)
-    description: >
-      GraphQL subgraph for querying PancakeSwap StableSwap pools on BNB Smart Chain,
-      providing stable coin pair liquidity, swap volumes, and pool statistics for
-      low-slippage stablecoin trading pairs.
-    image: https://pancakeswap.finance/logo.png
-    humanURL: https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-stableswap
-    baseURL: https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-stableswap
-    tags:
-      - GraphQL
-      - Subgraph
-      - BNB Chain
-      - StableSwap
-      - Stablecoins
-    properties:
-      - type: Documentation
-        url: https://docs.pancakeswap.finance/chinese/gei-kai-fa-zhe-men/api/subgraph
-    contact:
-      - FN: PancakeSwap
-        url: https://pancakeswap.finance
-
-  - name: PancakeSwap Profile API
-    description: >
-      REST API for PancakeSwap user profile data including usernames, leaderboard
-      rankings by trading volume, team competitions, and profile registration.
-      Supports CORS for cross-origin access.
-    image: https://pancakeswap.finance/logo.png
-    humanURL: https://github.com/pancakeswap/pancake-profile-api
-    baseURL: https://profile.pancakeswap.com/api
-    tags:
-      - Profiles
-      - Leaderboard
-      - Users
-      - Trading Volume
-    properties:
-      - type: Documentation
-        url: https://github.com/pancakeswap/pancake-profile-api/blob/develop/docs/README.md
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/pancakeswap/refs/heads/main/openapi/profile-openapi.yml
-    contact:
-      - FN: PancakeSwap
-        url: https://pancakeswap.finance
-
-  - name: PancakeSwap NFT Market Subgraph
-    description: >
-      GraphQL subgraph for querying PancakeSwap NFT Market data on BNB Smart Chain,
-      including NFT collections, listings, sales, bids, and trading history for
-      the PancakeSwap NFT marketplace.
-    image: https://pancakeswap.finance/logo.png
-    humanURL: https://docs.pancakeswap.finance/chinese/gei-kai-fa-zhe-men/api/subgraph
-    baseURL: https://api.thegraph.com/subgraphs/name/pancakeswap/nft-market
-    tags:
-      - GraphQL
-      - Subgraph
-      - NFT
-      - BNB Chain
-      - Marketplace
-    properties:
-      - type: Documentation
-        url: https://docs.pancakeswap.finance/chinese/gei-kai-fa-zhe-men/api/subgraph
-    contact:
-      - FN: PancakeSwap
-        url: https://pancakeswap.finance
-
-  - name: PancakeSwap MasterChef V3 Subgraph
-    description: >
-      GraphQL subgraph for querying PancakeSwap yield farming data via MasterChef V3
-      on BNB Smart Chain, including active farms, CAKE emission rates, staking positions,
-      and farm APR data for V3 concentrated liquidity farms.
-    image: https://pancakeswap.finance/logo.png
-    humanURL: https://docs.pancakeswap.finance/chinese/gei-kai-fa-zhe-men/api/subgraph
-    baseURL: https://api.thegraph.com/subgraphs/name/pancakeswap/masterchef-v3
-    tags:
-      - GraphQL
-      - Subgraph
-      - Yield Farming
-      - CAKE
-      - MasterChef
-      - BNB Chain
-    properties:
-      - type: Documentation
-        url: https://docs.pancakeswap.finance/chinese/gei-kai-fa-zhe-men/api/subgraph
-    contact:
-      - FN: PancakeSwap
-        url: https://pancakeswap.finance
-
-common:
-  - type: Website
-    url: https://pancakeswap.finance
+    '
+  image: https://pancakeswap.finance/logo.png
+  humanURL: https://github.com/pancakeswap/pancake-info-api
+  baseURL: https://api.pancakeswap.info
+  tags:
+  - Tokens
+  - Pairs
+  - Liquidity
+  - Prices
+  - Volume
+  properties:
   - type: Documentation
-    url: https://docs.pancakeswap.finance
-  - type: DeveloperDocumentation
-    url: https://developer.pancakeswap.finance
-  - type: GithubOrganization
-    url: https://github.com/pancakeswap
-  - type: Blog
-    url: https://blog.pancakeswap.finance
-  - type: Twitter
-    url: https://twitter.com/PancakeSwap
-  - type: Telegram
-    url: https://t.me/PancakeSwap
-  - type: Discord
-    url: https://discord.gg/pancakeswap
-  - type: Reddit
-    url: https://reddit.com/r/pancakeswap
-  - type: TermsOfService
-    url: https://pancakeswap.finance/terms-of-service
-  - type: PrivacyPolicy
-    url: https://pancakeswap.finance/privacy-policy
-  - type: StatusPage
-    url: https://status.pancakeswap.finance
-  - type: GitHubRepository
-    url: https://github.com/pancakeswap/pancake-frontend
-  - type: Plans
-    url: https://raw.githubusercontent.com/api-evangelist/pancakeswap/refs/heads/main/plans/plans.yml
-  - type: RateLimits
-    url: https://raw.githubusercontent.com/api-evangelist/pancakeswap/refs/heads/main/rate-limits/rate-limits.yml
-  - type: FinancialOperations
-    url: https://raw.githubusercontent.com/api-evangelist/pancakeswap/refs/heads/main/finops/finops.yml
+    url: https://github.com/pancakeswap/pancake-info-api/blob/develop/v2-documentation.md
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/api-evangelist/pancakeswap/refs/heads/main/openapi/openapi.yml
+  - url: graphql/pancakeswap-graphql.md
+    type: GraphQL
+  contact:
+  - FN: PancakeSwap
+    url: https://pancakeswap.finance
+    email: ''
+- name: PancakeSwap Exchange V2 Subgraph (BSC)
+  description: 'GraphQL subgraph for querying PancakeSwap V2 exchange data on BNB
+    Smart Chain, including swaps, liquidity pools, trading pairs, volume, and price
+    history. Hosted on NodeReal MegaNode API Marketplace.
 
+    '
+  image: https://pancakeswap.finance/logo.png
+  humanURL: https://nodereal.io/meganode/api-marketplace/pancakeswap-graphql
+  baseURL: https://nodereal.io/meganode/api-marketplace/pancakeswap-graphql
+  tags:
+  - GraphQL
+  - Subgraph
+  - BNB Chain
+  - Exchange V2
+  - Liquidity Pools
+  properties:
+  - type: Documentation
+    url: https://docs.pancakeswap.finance/chinese/gei-kai-fa-zhe-men/api/subgraph
+  - type: X-Subgraph
+    url: https://nodereal.io/meganode/api-marketplace/pancakeswap-graphql
+  contact:
+  - FN: PancakeSwap
+    url: https://pancakeswap.finance
+- name: PancakeSwap Exchange V2 Subgraph (Ethereum)
+  description: 'GraphQL subgraph for querying PancakeSwap V2 exchange data on Ethereum
+    mainnet, including swaps, liquidity pools, pairs, and historical volume data hosted
+    on The Graph decentralized network.
+
+    '
+  image: https://pancakeswap.finance/logo.png
+  humanURL: https://api.thegraph.com/subgraphs/name/pancakeswap/exhange-eth
+  baseURL: https://api.thegraph.com/subgraphs/name/pancakeswap/exhange-eth
+  tags:
+  - GraphQL
+  - Subgraph
+  - Ethereum
+  - Exchange V2
+  properties:
+  - type: Documentation
+    url: https://docs.pancakeswap.finance/chinese/gei-kai-fa-zhe-men/api/subgraph
+  contact:
+  - FN: PancakeSwap
+    url: https://pancakeswap.finance
+- name: PancakeSwap Exchange V3 Subgraph (BSC)
+  description: 'GraphQL subgraph for querying PancakeSwap V3 concentrated liquidity
+    exchange data on BNB Smart Chain, including positions, pools, ticks, swaps, and
+    fee tiers. Hosted on The Graph and NodeReal.
+
+    '
+  image: https://pancakeswap.finance/logo.png
+  humanURL: https://thegraph.com/explorer/subgraphs/78EUqzJmEVJsAKvWghn7qotf9LVGqcTQxJhT5z84ZmgJ
+  baseURL: https://thegraph.com/explorer/subgraphs/78EUqzJmEVJsAKvWghn7qotf9LVGqcTQxJhT5z84ZmgJ
+  tags:
+  - GraphQL
+  - Subgraph
+  - BNB Chain
+  - Exchange V3
+  - Concentrated Liquidity
+  properties:
+  - type: Documentation
+    url: https://developer.pancakeswap.finance/apis/subgraph
+  contact:
+  - FN: PancakeSwap
+    url: https://pancakeswap.finance
+- name: PancakeSwap Exchange V3 Subgraph (Ethereum)
+  description: 'GraphQL subgraph for querying PancakeSwap V3 concentrated liquidity
+    exchange data on Ethereum mainnet, including positions, pools, swaps, and historical
+    volume data hosted on The Graph decentralized network.
+
+    '
+  image: https://pancakeswap.finance/logo.png
+  humanURL: https://thegraph.com/explorer/subgraphs/9opY17WnEPD4REcC43yHycQthSeUMQE26wyoeMjZTLEx
+  baseURL: https://thegraph.com/explorer/subgraphs/9opY17WnEPD4REcC43yHycQthSeUMQE26wyoeMjZTLEx
+  tags:
+  - GraphQL
+  - Subgraph
+  - Ethereum
+  - Exchange V3
+  - Concentrated Liquidity
+  properties:
+  - type: Documentation
+    url: https://developer.pancakeswap.finance/apis/subgraph
+  contact:
+  - FN: PancakeSwap
+    url: https://pancakeswap.finance
+- name: PancakeSwap StableSwap Subgraph (BSC)
+  description: 'GraphQL subgraph for querying PancakeSwap StableSwap pools on BNB
+    Smart Chain, providing stable coin pair liquidity, swap volumes, and pool statistics
+    for low-slippage stablecoin trading pairs.
+
+    '
+  image: https://pancakeswap.finance/logo.png
+  humanURL: https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-stableswap
+  baseURL: https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-stableswap
+  tags:
+  - GraphQL
+  - Subgraph
+  - BNB Chain
+  - StableSwap
+  - Stablecoins
+  properties:
+  - type: Documentation
+    url: https://docs.pancakeswap.finance/chinese/gei-kai-fa-zhe-men/api/subgraph
+  contact:
+  - FN: PancakeSwap
+    url: https://pancakeswap.finance
+- name: PancakeSwap Profile API
+  description: 'REST API for PancakeSwap user profile data including usernames, leaderboard
+    rankings by trading volume, team competitions, and profile registration. Supports
+    CORS for cross-origin access.
+
+    '
+  image: https://pancakeswap.finance/logo.png
+  humanURL: https://github.com/pancakeswap/pancake-profile-api
+  baseURL: https://profile.pancakeswap.com/api
+  tags:
+  - Profiles
+  - Leaderboard
+  - Users
+  - Trading Volume
+  properties:
+  - type: Documentation
+    url: https://github.com/pancakeswap/pancake-profile-api/blob/develop/docs/README.md
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/api-evangelist/pancakeswap/refs/heads/main/openapi/profile-openapi.yml
+  contact:
+  - FN: PancakeSwap
+    url: https://pancakeswap.finance
+- name: PancakeSwap NFT Market Subgraph
+  description: 'GraphQL subgraph for querying PancakeSwap NFT Market data on BNB Smart
+    Chain, including NFT collections, listings, sales, bids, and trading history for
+    the PancakeSwap NFT marketplace.
+
+    '
+  image: https://pancakeswap.finance/logo.png
+  humanURL: https://docs.pancakeswap.finance/chinese/gei-kai-fa-zhe-men/api/subgraph
+  baseURL: https://api.thegraph.com/subgraphs/name/pancakeswap/nft-market
+  tags:
+  - GraphQL
+  - Subgraph
+  - NFT
+  - BNB Chain
+  - Marketplace
+  properties:
+  - type: Documentation
+    url: https://docs.pancakeswap.finance/chinese/gei-kai-fa-zhe-men/api/subgraph
+  contact:
+  - FN: PancakeSwap
+    url: https://pancakeswap.finance
+- name: PancakeSwap MasterChef V3 Subgraph
+  description: 'GraphQL subgraph for querying PancakeSwap yield farming data via MasterChef
+    V3 on BNB Smart Chain, including active farms, CAKE emission rates, staking positions,
+    and farm APR data for V3 concentrated liquidity farms.
+
+    '
+  image: https://pancakeswap.finance/logo.png
+  humanURL: https://docs.pancakeswap.finance/chinese/gei-kai-fa-zhe-men/api/subgraph
+  baseURL: https://api.thegraph.com/subgraphs/name/pancakeswap/masterchef-v3
+  tags:
+  - GraphQL
+  - Subgraph
+  - Yield Farming
+  - CAKE
+  - MasterChef
+  - BNB Chain
+  properties:
+  - type: Documentation
+    url: https://docs.pancakeswap.finance/chinese/gei-kai-fa-zhe-men/api/subgraph
+  contact:
+  - FN: PancakeSwap
+    url: https://pancakeswap.finance
+common:
+- type: Website
+  url: https://pancakeswap.finance
+- type: Documentation
+  url: https://docs.pancakeswap.finance
+- type: DeveloperDocumentation
+  url: https://developer.pancakeswap.finance
+- type: GithubOrganization
+  url: https://github.com/pancakeswap
+- type: Blog
+  url: https://blog.pancakeswap.finance
+- type: Twitter
+  url: https://twitter.com/PancakeSwap
+- type: Telegram
+  url: https://t.me/PancakeSwap
+- type: Discord
+  url: https://discord.gg/pancakeswap
+- type: Reddit
+  url: https://reddit.com/r/pancakeswap
+- type: TermsOfService
+  url: https://pancakeswap.finance/terms-of-service
+- type: PrivacyPolicy
+  url: https://pancakeswap.finance/privacy-policy
+- type: StatusPage
+  url: https://status.pancakeswap.finance
+- type: GitHubRepository
+  url: https://github.com/pancakeswap/pancake-frontend
+- type: Plans
+  url: https://raw.githubusercontent.com/api-evangelist/pancakeswap/refs/heads/main/plans/plans.yml
+- type: RateLimits
+  url: https://raw.githubusercontent.com/api-evangelist/pancakeswap/refs/heads/main/rate-limits/rate-limits.yml
+- type: FinancialOperations
+  url: https://raw.githubusercontent.com/api-evangelist/pancakeswap/refs/heads/main/finops/finops.yml
 maintainers:
-  - FN: API Evangelist
-    url: https://apievangelist.com
-    email: info@apievangelist.com
+- FN: API Evangelist
+  url: https://apievangelist.com
+  email: info@apievangelist.com
