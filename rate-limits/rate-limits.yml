@@ -1,0 +1,57 @@
+name: PancakeSwap API Rate Limits
+description: >
+  PancakeSwap's public REST APIs are openly accessible with no API key requirement.
+  The Info API v2 (api.pancakeswap.info) applies response caching of 5 minutes
+  (300 seconds) to all endpoints. There are no documented hard rate limits for
+  the Info or Profile APIs. Subgraph query rate limits depend on the hosting
+  provider (The Graph Protocol or NodeReal) and may vary by plan.
+rateLimits:
+  - name: Info API v2 Cache TTL
+    description: >
+      All responses from the PancakeSwap Info API v2 are cached for 5 minutes.
+      Requests within that window return cached data. This effectively functions
+      as a soft rate limit on data freshness rather than a request throttle.
+    api: PancakeSwap Info API v2
+    baseURL: https://api.pancakeswap.info
+    type: cache
+    ttl: 300
+    unit: seconds
+    endpoints:
+      - /api/v2/summary
+      - /api/v2/tokens
+      - /api/v2/tokens/{address}
+      - /api/v2/pairs
+
+  - name: The Graph Hosted Service Query Limits
+    description: >
+      The Graph hosted service endpoints apply query rate limits and may throttle
+      high-frequency requests. Decentralized network queries require GRT token
+      payment per query. Specific numeric limits are set by The Graph Protocol
+      and may vary by subgraph and network conditions.
+    api: PancakeSwap Subgraphs (The Graph)
+    type: query-based
+    notes: >
+      Rate limits enforced by The Graph Protocol. See
+      https://thegraph.com/docs/en/querying/querying-the-graph/ for current limits.
+
+  - name: NodeReal MegaNode Query Limits
+    description: >
+      NodeReal MegaNode API Marketplace applies rate limits based on the selected
+      subscription tier. Free and developer tiers have lower CU (Compute Unit)
+      allowances, while enterprise plans offer higher throughput.
+    api: PancakeSwap Exchange V2 Subgraph (BSC via NodeReal)
+    type: compute-unit
+    notes: >
+      Limits vary by NodeReal plan. See https://nodereal.io/meganode for current
+      pricing and CU allocations.
+
+  - name: Profile API (No Published Limits)
+    description: >
+      The PancakeSwap Profile API does not document explicit rate limits.
+      Standard fair-use expectations apply. POST /users/register requires
+      on-chain wallet signature validation which provides inherent throttling.
+    api: PancakeSwap Profile API
+    baseURL: https://profile.pancakeswap.com/api
+    type: undocumented
+    notes: >
+      No explicit rate limit documentation found. Fair-use access assumed.

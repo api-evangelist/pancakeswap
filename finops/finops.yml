@@ -1,0 +1,79 @@
+name: PancakeSwap API Financial Operations
+description: >
+  PancakeSwap's public APIs (Info API v2 and Profile API) are free to use with
+  no direct monetary cost. Financial considerations arise when using subgraphs
+  on The Graph Protocol's decentralized network (GRT token fees), NodeReal
+  MegaNode for enterprise BSC subgraph access, or when building applications
+  that interact with PancakeSwap smart contracts (gas fees on BNB Chain and
+  other supported networks). PancakeSwap itself charges a trading fee on swaps
+  that generates protocol revenue.
+costs:
+  - name: Info API v2
+    description: Free, no cost, no authentication required
+    type: free
+    amount: 0
+    currency: USD
+    notes: >
+      Open REST API hosted on Vercel. No API key, no billing.
+
+  - name: Profile API
+    description: Free, no cost, no authentication required for read operations
+    type: free
+    amount: 0
+    currency: USD
+    notes: >
+      Open REST API. Write operations (registration) require wallet signature;
+      no monetary cost for the API call itself.
+
+  - name: The Graph Decentralized Network Queries
+    description: >
+      Query fees paid in GRT (Graph Token) to indexers when using PancakeSwap
+      subgraphs on The Graph's decentralized network. Fee per query varies based
+      on market conditions, query complexity, and network demand.
+    type: usage-based
+    currency: GRT
+    notes: >
+      GRT must be purchased on open market exchanges. Query fees are typically
+      a fraction of 1 GRT per query. See https://thegraph.com for current rates.
+
+  - name: NodeReal MegaNode Subscription
+    description: >
+      Monthly subscription for access to PancakeSwap Exchange V2 GraphQL on
+      BNB Smart Chain via NodeReal MegaNode API Marketplace. Pricing tiers vary
+      based on Compute Unit (CU) consumption per month.
+    type: subscription
+    currency: USD
+    notes: >
+      Free developer tier available with limited CUs. Paid plans start at
+      enterprise pricing. See https://nodereal.io/meganode for current tiers.
+
+  - name: PancakeSwap Trading Fees (Protocol Revenue)
+    description: >
+      When end-users execute swaps through the PancakeSwap protocol, trading
+      fees are charged. V2 pairs charge 0.25% per swap (0.17% to LPs, 0.03%
+      to treasury, 0.05% to CAKE buyback). V3 pools offer fee tiers of 0.01%,
+      0.05%, 0.25%, and 1%. These are on-chain costs borne by the trader,
+      not the API consumer.
+    type: protocol-fee
+    v2Fee: "0.25%"
+    v3Tiers:
+      - "0.01%"
+      - "0.05%"
+      - "0.25%"
+      - "1.00%"
+    currency: percentage-of-swap
+    notes: >
+      These fees apply to smart contract interactions, not API calls.
+      API access is free; protocol fees are only incurred when executing
+      on-chain transactions.
+
+  - name: Gas Fees (BNB Chain and Multi-Chain)
+    description: >
+      On-chain interactions (swaps, liquidity provision, staking) require
+      gas fees in the native token of the respective blockchain. On BNB Chain
+      gas is paid in BNB; on Ethereum in ETH; on Arbitrum in ETH; etc.
+      API reads do not incur gas fees.
+    type: gas
+    notes: >
+      Not an API cost. Relevant only for developers building DeFi applications
+      that submit transactions to PancakeSwap smart contracts.

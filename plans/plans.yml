@@ -1,0 +1,78 @@
+name: PancakeSwap API Plans
+description: >
+  PancakeSwap provides its core REST and GraphQL APIs free of charge with no
+  registration required. The Info API v2 and Profile API are open endpoints
+  requiring no API key. Subgraph access via The Graph Protocol may require
+  GRT (Graph Token) for queries on the decentralized network; hosted service
+  endpoints on The Graph and NodeReal MegaNode may have their own usage tiers.
+  PancakeSwap itself does not currently offer paid commercial API plans.
+plans:
+  - name: Free (Info API v2)
+    description: >
+      Open access to PancakeSwap Info API v2 endpoints with no authentication
+      required. Returns token prices, pair data, and market summaries for the
+      top ~1000 pairs. Responses are cached for 5 minutes (300 seconds).
+    url: https://github.com/pancakeswap/pancake-info-api
+    price: 0
+    currency: USD
+    unit: month
+    rateLimits:
+      - name: Cache TTL
+        description: Results are cached for 5 minutes per endpoint
+        ttl: 300
+        unit: seconds
+    features:
+      - Summary endpoint (/api/v2/summary)
+      - Token list endpoint (/api/v2/tokens)
+      - Token detail endpoint (/api/v2/tokens/{address})
+      - Pairs endpoint (/api/v2/pairs)
+      - No authentication required
+      - CORS supported
+
+  - name: Free (Profile API)
+    description: >
+      Open access to the PancakeSwap Profile API with no authentication required
+      for read endpoints. User registration (POST) requires wallet signature
+      verification. Supports CORS for all endpoints.
+    url: https://github.com/pancakeswap/pancake-profile-api
+    price: 0
+    currency: USD
+    unit: month
+    features:
+      - User profile lookup by address
+      - Global leaderboard access
+      - Team leaderboard access
+      - Username validation
+      - CORS supported
+
+  - name: The Graph Decentralized Network (GRT)
+    description: >
+      Access to PancakeSwap subgraphs on The Graph's decentralized network
+      requires GRT (Graph Token) for query fees paid to indexers and curators.
+      Query fees are priced in GRT per query, with rates determined by the
+      market and signal allocation.
+    url: https://thegraph.com/docs/en/querying/querying-the-graph/
+    price: variable
+    currency: GRT
+    unit: query
+    features:
+      - Exchange V2 subgraph (BSC, ETH)
+      - Exchange V3 subgraph (BSC, ETH, Polygon zkEVM, zkSync, Linea, Base)
+      - StableSwap subgraph
+      - MasterChef V3 subgraph
+      - NFT Market subgraph
+      - Blocks subgraphs (multiple chains)
+
+  - name: NodeReal MegaNode (BSC Subgraph)
+    description: >
+      NodeReal MegaNode API Marketplace provides access to PancakeSwap Exchange
+      V2 GraphQL on BNB Smart Chain. NodeReal offers tiered plans for high-volume
+      access with rate limits and SLA guarantees for enterprise users.
+    url: https://nodereal.io/meganode/api-marketplace/pancakeswap-graphql
+    price: variable
+    currency: USD
+    unit: month
+    features:
+      - PancakeSwap Exchange V2 GraphQL on BSC
+      - High availability infrastructure
+      - Enterprise SLA options
