@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/pancakeswap/main/json-schema/user-profile.json",
+  "title": "PancakeSwap User Profile",
+  "description": "Schema for a PancakeSwap user profile including leaderboard statistics",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "User's wallet address",
+      "pattern": "^0x[a-fA-F0-9]{40}$",
+      "example": "0x1234567890abcdef1234567890abcdef12345678"
+    },
+    "username": {
+      "type": "string",
+      "description": "User's chosen username",
+      "minLength": 3,
+      "maxLength": 15,
+      "example": "pancake_trader"
+    },
+    "leaderboard": {
+      "type": "object",
+      "description": "Leaderboard statistics for the user",
+      "properties": {
+        "global": {
+          "type": "integer",
+          "description": "Global rank",
+          "example": 42
+        },
+        "team": {
+          "type": "integer",
+          "description": "Team rank",
+          "example": 5
+        },
+        "volume": {
+          "type": "number",
+          "description": "Trading volume in USD",
+          "example": 150000.50
+        },
+        "next_rank": {
+          "type": "number",
+          "description": "Volume needed to reach next rank in USD",
+          "example": 200000.00
+        }
+      },
+      "required": ["global", "team", "volume", "next_rank"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Account creation timestamp",
+      "example": "2023-01-15T12:00:00Z"
+    },
+    "updated_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Last update timestamp",
+      "example": null
+    }
+  },
+  "required": ["address", "username", "created_at"]
+}

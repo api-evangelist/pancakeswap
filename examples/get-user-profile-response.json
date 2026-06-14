@@ -1,0 +1,12 @@
+{
+  "address": "0x1234567890abcdef1234567890abcdef12345678",
+  "username": "pancake_trader",
+  "leaderboard": {
+    "global": 42,
+    "team": 5,
+    "volume": 150000.50,
+    "next_rank": 200000.00
+  },
+  "created_at": "2023-01-15T12:00:00Z",
+  "updated_at": "2023-06-01T09:30:00Z"
+}

@@ -1,0 +1,59 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "pancake": "https://pancakeswap.finance/vocab#",
+    "dex": "https://schema.org/",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "sameAs": "schema:sameAs",
+    "logo": "schema:logo",
+    "contactPoint": "schema:contactPoint",
+    "pancake:token": {"@type": "@id"},
+    "pancake:pair": {"@type": "@id"},
+    "pancake:price": {"@type": "schema:Number"},
+    "pancake:volume": {"@type": "schema:Number"},
+    "pancake:liquidity": {"@type": "schema:Number"},
+    "pancake:address": {"@type": "xsd:string"},
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@type": "WebAPI",
+  "@id": "https://api.pancakeswap.info",
+  "name": "PancakeSwap Info API",
+  "description": "REST API providing on-chain DEX data for PancakeSwap trading pairs, tokens, liquidity pools, and market summaries on BNB Chain and multiple other blockchains.",
+  "url": "https://pancakeswap.finance",
+  "logo": "https://pancakeswap.finance/logo.png",
+  "documentation": "https://developer.pancakeswap.finance",
+  "sameAs": [
+    "https://github.com/pancakeswap",
+    "https://twitter.com/PancakeSwap",
+    "https://t.me/PancakeSwap"
+  ],
+  "provider": {
+    "@type": "Organization",
+    "name": "PancakeSwap",
+    "url": "https://pancakeswap.finance",
+    "sameAs": "https://github.com/pancakeswap"
+  },
+  "termsOfService": "https://pancakeswap.finance/terms-of-service",
+  "potentialAction": [
+    {
+      "@type": "SearchAction",
+      "name": "Get Token Price",
+      "description": "Retrieve current price and metadata for a BEP20 token by address",
+      "target": "https://api.pancakeswap.info/api/v2/tokens/{address}"
+    },
+    {
+      "@type": "SearchAction",
+      "name": "Get Trading Pairs",
+      "description": "Retrieve top 1000 trading pairs sorted by liquidity reserves",
+      "target": "https://api.pancakeswap.info/api/v2/pairs"
+    },
+    {
+      "@type": "SearchAction",
+      "name": "Get Market Summary",
+      "description": "Retrieve market summary data for top 1000 PancakeSwap pairs",
+      "target": "https://api.pancakeswap.info/api/v2/summary"
+    }
+  ]
+}

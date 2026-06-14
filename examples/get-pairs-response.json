@@ -1,0 +1,33 @@
+{
+  "updated_at": 1686000000,
+  "data": {
+    "0xA527a61703D82139F8a06Bc30097cC9CAA2df5A6": {
+      "pair_address": "0xA527a61703D82139F8a06Bc30097cC9CAA2df5A6",
+      "base_name": "PancakeSwap Token",
+      "base_symbol": "CAKE",
+      "base_address": "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+      "quote_name": "Wrapped BNB",
+      "quote_symbol": "WBNB",
+      "quote_address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "price": "5.32",
+      "base_volume": "1250000.00",
+      "quote_volume": "3289.47",
+      "liquidity": "47500000.00",
+      "liquidity_BNB": "125000.00"
+    },
+    "0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16": {
+      "pair_address": "0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16",
+      "base_name": "Wrapped BNB",
+      "base_symbol": "WBNB",
+      "base_address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "quote_name": "Binance USD",
+      "quote_symbol": "BUSD",
+      "quote_address": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+      "price": "380.00",
+      "base_volume": "500000.00",
+      "quote_volume": "190000000.00",
+      "liquidity": "380000000.00",
+      "liquidity_BNB": "1000000.00"
+    }
+  }
+}

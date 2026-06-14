@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/pancakeswap/main/json-schema/pair.json",
+  "title": "PancakeSwap Trading Pair",
+  "description": "Schema for a PancakeSwap V2 liquidity trading pair",
+  "type": "object",
+  "properties": {
+    "pair_address": {
+      "type": "string",
+      "description": "Contract address of the liquidity pair",
+      "pattern": "^0x[a-fA-F0-9]{40}$",
+      "example": "0xA527a61703D82139F8a06Bc30097cC9CAA2df5A6"
+    },
+    "base_name": {
+      "type": "string",
+      "description": "Full name of the base token",
+      "example": "PancakeSwap Token"
+    },
+    "base_symbol": {
+      "type": "string",
+      "description": "Symbol of the base token",
+      "example": "CAKE"
+    },
+    "base_address": {
+      "type": "string",
+      "description": "Contract address of the base token",
+      "pattern": "^0x[a-fA-F0-9]{40}$",
+      "example": "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82"
+    },
+    "quote_name": {
+      "type": "string",
+      "description": "Full name of the quote token",
+      "example": "Wrapped BNB"
+    },
+    "quote_symbol": {
+      "type": "string",
+      "description": "Symbol of the quote token",
+      "example": "WBNB"
+    },
+    "quote_address": {
+      "type": "string",
+      "description": "Contract address of the quote token",
+      "pattern": "^0x[a-fA-F0-9]{40}$",
+      "example": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c"
+    },
+    "price": {
+      "type": "string",
+      "description": "Current price of base token in quote token",
+      "example": "5.32"
+    },
+    "base_volume": {
+      "type": "string",
+      "description": "24-hour base token trading volume",
+      "example": "100000.00"
+    },
+    "quote_volume": {
+      "type": "string",
+      "description": "24-hour quote token trading volume",
+      "example": "1400.00"
+    },
+    "liquidity": {
+      "type": "string",
+      "description": "Total liquidity in USD",
+      "example": "1000000.00"
+    },
+    "liquidity_BNB": {
+      "type": "string",
+      "description": "Total liquidity denominated in BNB",
+      "example": "2800.00"
+    }
+  },
+  "required": [
+    "pair_address",
+    "base_name",
+    "base_symbol",
+    "base_address",
+    "quote_name",
+    "quote_symbol",
+    "quote_address",
+    "price",
+    "base_volume",
+    "quote_volume",
+    "liquidity",
+    "liquidity_BNB"
+  ]
+}

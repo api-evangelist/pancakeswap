@@ -1,0 +1,23 @@
+{
+  "updated_at": 1686000000,
+  "data": {
+    "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82": {
+      "name": "PancakeSwap Token",
+      "symbol": "CAKE",
+      "price": "5.32",
+      "price_BNB": "0.014"
+    },
+    "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c": {
+      "name": "Wrapped BNB",
+      "symbol": "WBNB",
+      "price": "380.00",
+      "price_BNB": "1.000"
+    },
+    "0x55d398326f99059fF775485246999027B3197955": {
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "price": "1.00",
+      "price_BNB": "0.00263"
+    }
+  }
+}

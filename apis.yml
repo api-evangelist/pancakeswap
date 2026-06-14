@@ -42,7 +42,7 @@ apis:
       - type: Documentation
         url: https://github.com/pancakeswap/pancake-info-api/blob/develop/v2-documentation.md
       - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/pancakeswap/refs/heads/main/openapi.yml
+        url: https://raw.githubusercontent.com/api-evangelist/pancakeswap/refs/heads/main/openapi/openapi.yml
     contact:
       - FN: PancakeSwap
         url: https://pancakeswap.finance
@@ -170,6 +170,8 @@ apis:
     properties:
       - type: Documentation
         url: https://github.com/pancakeswap/pancake-profile-api/blob/develop/docs/README.md
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/pancakeswap/refs/heads/main/openapi/profile-openapi.yml
     contact:
       - FN: PancakeSwap
         url: https://pancakeswap.finance
