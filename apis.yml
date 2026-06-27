@@ -227,9 +227,9 @@ common:
   url: https://pancakeswap.finance
 - type: Documentation
   url: https://docs.pancakeswap.finance
-- type: DeveloperDocumentation
+- type: Documentation
   url: https://developer.pancakeswap.finance
-- type: GithubOrganization
+- type: GitHubOrganization
   url: https://github.com/pancakeswap
 - type: Blog
   url: https://blog.pancakeswap.finance
