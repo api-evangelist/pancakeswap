@@ -223,6 +223,8 @@ apis:
   - FN: PancakeSwap
     url: https://pancakeswap.finance
 common:
+- type: DomainSecurity
+  url: security/pancakeswap-domain-security.yml
 - type: Website
   url: https://pancakeswap.finance
 - type: Documentation
