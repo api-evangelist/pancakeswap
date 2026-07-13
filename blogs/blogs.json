@@ -2,11 +2,13 @@
   "repo": "pancakeswap",
   "feeds": [
     {
-      "source": "https://blog.pancakeswap.finance",
+      "source": "https://github.com/pancakeswap",
+      "feed_url": "https://github.com/pancakeswap",
+      "title": "",
       "saved": 0,
-      "error": "HTTP 403 Forbidden"
+      "method": "none"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-27T12:59:43Z"
+  "fetched": "2026-07-11T11:50:51Z"
 }
