@@ -1,0 +1,133 @@
+openapi: 3.0.3
+info:
+  title: PancakeSwap Info Leaderboard Tokens API
+  description: 'REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.
+
+    '
+  version: '2.0'
+  contact:
+    name: PancakeSwap
+    url: https://pancakeswap.finance
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://api.pancakeswap.info/api
+  description: PancakeSwap Info API
+tags:
+- name: Tokens
+paths:
+  /v2/tokens:
+    get:
+      operationId: getTokens
+      summary: Get all tokens
+      description: 'Returns the tokens in the top ~1000 pairs on PancakeSwap, sorted by reserves. Results are cached for 5 minutes.
+
+        '
+      tags:
+      - Tokens
+      responses:
+        '200':
+          description: Successful response with token data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokensResponse'
+              example:
+                updated_at: 1234567890
+                data:
+                  '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82':
+                    name: PancakeSwap Token
+                    symbol: CAKE
+                    price: '5.32'
+                    price_BNB: '0.014'
+  /v2/tokens/{address}:
+    get:
+      operationId: getToken
+      summary: Get token by address
+      description: 'Retrieves token information based on the provided BEP20 token address. Results are cached for 5 minutes.
+
+        '
+      tags:
+      - Tokens
+      parameters:
+      - name: address
+        in: path
+        required: true
+        description: BEP20 token contract address (checksummed)
+        schema:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+        example: '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82'
+      responses:
+        '200':
+          description: Successful response with token data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleTokenResponse'
+              example:
+                updated_at: 1234567890
+                data:
+                  name: PancakeSwap Token
+                  symbol: CAKE
+                  price: '5.32'
+                  price_BNB: '0.014'
+        '400':
+          description: Invalid token address
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    TokensResponse:
+      type: object
+      properties:
+        updated_at:
+          type: integer
+          format: int64
+          description: Unix timestamp of the last data update
+          example: 1234567890
+        data:
+          type: object
+          description: Map of token address to token data
+          additionalProperties:
+            $ref: '#/components/schemas/TokenData'
+    TokenData:
+      type: object
+      description: Token price and metadata
+      properties:
+        name:
+          type: string
+          description: Full token name
+          example: PancakeSwap Token
+        symbol:
+          type: string
+          description: Token ticker symbol
+          example: CAKE
+        price:
+          type: string
+          description: Token price in USD
+          example: '5.32'
+        price_BNB:
+          type: string
+          description: Token price in BNB
+          example: '0.014'
+    SingleTokenResponse:
+      type: object
+      properties:
+        updated_at:
+          type: integer
+          format: int64
+          description: Unix timestamp of the last data update
+          example: 1234567890
+        data:
+          $ref: '#/components/schemas/TokenData'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: Invalid token address

@@ -1,0 +1,83 @@
+openapi: 3.0.3
+info:
+  title: PancakeSwap Info Leaderboard Summary API
+  description: 'REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.
+
+    '
+  version: '2.0'
+  contact:
+    name: PancakeSwap
+    url: https://pancakeswap.finance
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://api.pancakeswap.info/api
+  description: PancakeSwap Info API
+tags:
+- name: Summary
+paths:
+  /v2/summary:
+    get:
+      operationId: getSummary
+      summary: Get top pairs summary
+      description: 'Returns data for the top ~1000 PancakeSwap pairs, sorted by reserves. Results are cached for 5 minutes.
+
+        '
+      tags:
+      - Summary
+      responses:
+        '200':
+          description: Successful response with pair summary data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryResponse'
+              example:
+                updated_at: 1234567890
+                data:
+                  0xBEPADDR_WBNB:0xBEPADDR_USDT:
+                    price: '0.000243902'
+                    base_volume: '183220.26'
+                    quote_volume: '44.68'
+                    liquidity: '183220.26'
+                    liquidity_BNB: '44.68'
+components:
+  schemas:
+    PairSummaryData:
+      type: object
+      description: Summary data for a trading pair
+      properties:
+        price:
+          type: string
+          description: Current price of the pair
+          example: '0.000243902'
+        base_volume:
+          type: string
+          description: 24-hour base token volume
+          example: '183220.26'
+        quote_volume:
+          type: string
+          description: 24-hour quote token volume
+          example: '44.68'
+        liquidity:
+          type: string
+          description: Total liquidity in USD
+          example: '183220.26'
+        liquidity_BNB:
+          type: string
+          description: Total liquidity in BNB
+          example: '44.68'
+    SummaryResponse:
+      type: object
+      properties:
+        updated_at:
+          type: integer
+          format: int64
+          description: Unix timestamp of the last data update
+          example: 1234567890
+        data:
+          type: object
+          description: Map of pair identifier to pair summary data
+          additionalProperties:
+            $ref: '#/components/schemas/PairSummaryData'

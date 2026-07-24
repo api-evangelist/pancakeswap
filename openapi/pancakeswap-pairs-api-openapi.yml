@@ -1,0 +1,118 @@
+openapi: 3.0.3
+info:
+  title: PancakeSwap Info Leaderboard Pairs API
+  description: 'REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.
+
+    '
+  version: '2.0'
+  contact:
+    name: PancakeSwap
+    url: https://pancakeswap.finance
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://api.pancakeswap.info/api
+  description: PancakeSwap Info API
+tags:
+- name: Pairs
+paths:
+  /v2/pairs:
+    get:
+      operationId: getPairs
+      summary: Get top trading pairs
+      description: 'Returns data for the top ~1000 PancakeSwap trading pairs, sorted by reserves. Results are cached for 5 minutes.
+
+        '
+      tags:
+      - Pairs
+      responses:
+        '200':
+          description: Successful response with pair data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PairsResponse'
+              example:
+                updated_at: 1234567890
+                data:
+                  0xPAIRADDR:
+                    pair_address: 0xPAIRADDR
+                    base_name: PancakeSwap Token
+                    base_symbol: CAKE
+                    base_address: '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82'
+                    quote_name: Wrapped BNB
+                    quote_symbol: WBNB
+                    quote_address: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c'
+                    price: '5.32'
+                    base_volume: '100000.00'
+                    quote_volume: '1400.00'
+                    liquidity: '1000000.00'
+                    liquidity_BNB: '2800.00'
+components:
+  schemas:
+    PairsResponse:
+      type: object
+      properties:
+        updated_at:
+          type: integer
+          format: int64
+          description: Unix timestamp of the last data update
+          example: 1234567890
+        data:
+          type: object
+          description: Map of pair address to pair data
+          additionalProperties:
+            $ref: '#/components/schemas/PairData'
+    PairData:
+      type: object
+      description: Detailed data for a trading pair
+      properties:
+        pair_address:
+          type: string
+          description: Contract address of the liquidity pair
+          example: '0xA527a61703D82139F8a06Bc30097cC9CAA2df5A6'
+        base_name:
+          type: string
+          description: Full name of the base token
+          example: PancakeSwap Token
+        base_symbol:
+          type: string
+          description: Symbol of the base token
+          example: CAKE
+        base_address:
+          type: string
+          description: Contract address of the base token
+          example: '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82'
+        quote_name:
+          type: string
+          description: Full name of the quote token
+          example: Wrapped BNB
+        quote_symbol:
+          type: string
+          description: Symbol of the quote token
+          example: WBNB
+        quote_address:
+          type: string
+          description: Contract address of the quote token
+          example: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c'
+        price:
+          type: string
+          description: Current price of base token in quote token
+          example: '5.32'
+        base_volume:
+          type: string
+          description: 24-hour base token volume
+          example: '100000.00'
+        quote_volume:
+          type: string
+          description: 24-hour quote token volume
+          example: '1400.00'
+        liquidity:
+          type: string
+          description: Total liquidity in USD
+          example: '1000000.00'
+        liquidity_BNB:
+          type: string
+          description: Total liquidity in BNB
+          example: '2800.00'

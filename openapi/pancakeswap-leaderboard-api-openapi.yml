@@ -1,0 +1,112 @@
+openapi: 3.0.3
+info:
+  title: PancakeSwap Info Leaderboard API
+  description: 'REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.
+
+    '
+  version: '2.0'
+  contact:
+    name: PancakeSwap
+    url: https://pancakeswap.finance
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://api.pancakeswap.info/api
+  description: PancakeSwap Info API
+tags:
+- name: Leaderboard
+paths:
+  /leaderboard/global:
+    get:
+      operationId: getGlobalLeaderboard
+      summary: Get global leaderboard
+      description: Returns global leaderboard ranked by trading volume in descending order.
+      tags:
+      - Leaderboard
+      responses:
+        '200':
+          description: Successful response with global leaderboard data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaderboardResponse'
+  /leaderboard/team/{id}:
+    get:
+      operationId: getTeamLeaderboard
+      summary: Get team leaderboard
+      description: Returns team-specific leaderboard ranked by trading volume in descending order.
+      tags:
+      - Leaderboard
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Team identifier
+        schema:
+          type: integer
+          minimum: 1
+        example: 1
+      responses:
+        '200':
+          description: Successful response with team leaderboard data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaderboardResponse'
+        '404':
+          description: Team not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: User not found
+        message:
+          type: string
+          description: Detailed error description
+          example: No user found with the provided address
+    LeaderboardEntry:
+      type: object
+      properties:
+        rank:
+          type: integer
+          description: Player's rank on the leaderboard
+          example: 1
+        address:
+          type: string
+          description: Player's wallet address
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        volume:
+          type: number
+          format: float
+          description: Player's trading volume in USD
+          example: 5000000.0
+        teamId:
+          type: integer
+          description: Player's assigned team ID
+          example: 2
+    LeaderboardResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of participants
+          example: 10000
+        volume:
+          type: number
+          format: float
+          description: Combined trading volume in USD
+          example: 1000000000.0
+        data:
+          type: array
+          description: Array of leaderboard entries
+          items:
+            $ref: '#/components/schemas/LeaderboardEntry'

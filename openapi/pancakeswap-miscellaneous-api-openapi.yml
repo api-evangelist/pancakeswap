@@ -1,0 +1,44 @@
+openapi: 3.0.3
+info:
+  title: PancakeSwap Info Leaderboard Miscellaneous API
+  description: 'REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.
+
+    '
+  version: '2.0'
+  contact:
+    name: PancakeSwap
+    url: https://pancakeswap.finance
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://api.pancakeswap.info/api
+  description: PancakeSwap Info API
+tags:
+- name: Miscellaneous
+paths:
+  /version:
+    get:
+      operationId: getVersion
+      summary: Get API version
+      description: Retrieves the current API version.
+      tags:
+      - Miscellaneous
+      responses:
+        '200':
+          description: Successful response with API version
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersionResponse'
+              example:
+                version: 1.0.0
+components:
+  schemas:
+    VersionResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          description: API version number
+          example: 1.0.0
