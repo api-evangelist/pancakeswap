@@ -1,0 +1,24 @@
+{
+  "provider": "pancakeswap",
+  "sources": [
+    "pancakeswap-leaderboard-api-openapi.yml",
+    "pancakeswap-miscellaneous-api-openapi.yml",
+    "pancakeswap-pairs-api-openapi.yml",
+    "pancakeswap-summary-api-openapi.yml",
+    "pancakeswap-tokens-api-openapi.yml",
+    "pancakeswap-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "pancakeswap-leaderboard-api-openapi.yml",
+    "pancakeswap-miscellaneous-api-openapi.yml",
+    "pancakeswap-pairs-api-openapi.yml",
+    "pancakeswap-summary-api-openapi.yml",
+    "pancakeswap-tokens-api-openapi.yml",
+    "pancakeswap-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

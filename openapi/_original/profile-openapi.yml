@@ -1,0 +1,326 @@
+openapi: 3.0.3
+info:
+  title: PancakeSwap Profile API
+  description: >
+    REST API for PancakeSwap user profile data including usernames, leaderboard
+    rankings by trading volume, team competitions, and profile registration.
+    Supports CORS for cross-origin access.
+  version: "1.0"
+  contact:
+    name: PancakeSwap
+    url: https://pancakeswap.finance
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://profile.pancakeswap.com/api
+    description: PancakeSwap Profile API
+
+paths:
+  /version:
+    get:
+      operationId: getVersion
+      summary: Get API version
+      description: Retrieves the current API version.
+      tags:
+        - Miscellaneous
+      responses:
+        "200":
+          description: Successful response with API version
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VersionResponse"
+              example:
+                version: "1.0.0"
+
+  /users/{address}:
+    get:
+      operationId: getUser
+      summary: Get user profile
+      description: Fetches user information and latest trading competition leaderboard statistics.
+      tags:
+        - Users
+      parameters:
+        - name: address
+          in: path
+          required: true
+          description: User's wallet address (BEP20)
+          schema:
+            type: string
+            pattern: "^0x[a-fA-F0-9]{40}$"
+          example: "0x1234567890abcdef1234567890abcdef12345678"
+      responses:
+        "200":
+          description: Successful response with user profile data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        "404":
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /users/register:
+    post:
+      operationId: registerUser
+      summary: Register a new user
+      description: Creates a new user with signature-verified address and username.
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterRequest"
+            example:
+              address: "0x1234567890abcdef1234567890abcdef12345678"
+              username: "pancake_trader"
+              signature: "0xabc123..."
+      responses:
+        "200":
+          description: Successful registration
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserBase"
+        "400":
+          description: Invalid request or signature
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "409":
+          description: Username or address already registered
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /users/valid/{username}:
+    get:
+      operationId: validateUsername
+      summary: Validate a username
+      description: Validates username according to platform criteria.
+      tags:
+        - Users
+      parameters:
+        - name: username
+          in: path
+          required: true
+          description: Username to validate
+          schema:
+            type: string
+            minLength: 3
+            maxLength: 15
+          example: "pancake_trader"
+      responses:
+        "200":
+          description: Username validation result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UsernameValidation"
+              example:
+                username: "pancake_trader"
+                valid: true
+
+  /leaderboard/global:
+    get:
+      operationId: getGlobalLeaderboard
+      summary: Get global leaderboard
+      description: Returns global leaderboard ranked by trading volume in descending order.
+      tags:
+        - Leaderboard
+      responses:
+        "200":
+          description: Successful response with global leaderboard data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LeaderboardResponse"
+
+  /leaderboard/team/{id}:
+    get:
+      operationId: getTeamLeaderboard
+      summary: Get team leaderboard
+      description: Returns team-specific leaderboard ranked by trading volume in descending order.
+      tags:
+        - Leaderboard
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Team identifier
+          schema:
+            type: integer
+            minimum: 1
+          example: 1
+      responses:
+        "200":
+          description: Successful response with team leaderboard data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LeaderboardResponse"
+        "404":
+          description: Team not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+components:
+  schemas:
+    VersionResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          description: API version number
+          example: "1.0.0"
+
+    LeaderboardStats:
+      type: object
+      description: User's leaderboard statistics
+      properties:
+        global:
+          type: integer
+          description: Global rank of the user
+          example: 42
+        team:
+          type: integer
+          description: Team rank of the user
+          example: 5
+        volume:
+          type: number
+          format: float
+          description: Trading volume in USD
+          example: 150000.50
+        next_rank:
+          type: number
+          format: float
+          description: Volume needed to reach the next rank in USD
+          example: 200000.00
+
+    UserBase:
+      type: object
+      properties:
+        address:
+          type: string
+          description: User's wallet address
+          example: "0x1234567890abcdef1234567890abcdef12345678"
+        username:
+          type: string
+          description: User's chosen username
+          example: "pancake_trader"
+        created_at:
+          type: string
+          format: date-time
+          description: Account creation timestamp
+          example: "2023-01-15T12:00:00Z"
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: Last update timestamp
+          example: null
+
+    UserProfile:
+      allOf:
+        - $ref: "#/components/schemas/UserBase"
+        - type: object
+          properties:
+            leaderboard:
+              $ref: "#/components/schemas/LeaderboardStats"
+
+    RegisterRequest:
+      type: object
+      required:
+        - address
+        - username
+        - signature
+      properties:
+        address:
+          type: string
+          description: User's wallet address
+          pattern: "^0x[a-fA-F0-9]{40}$"
+          example: "0x1234567890abcdef1234567890abcdef12345678"
+        username:
+          type: string
+          description: Desired username
+          minLength: 3
+          maxLength: 15
+          example: "pancake_trader"
+        signature:
+          type: string
+          description: Cryptographic signature for address verification
+          example: "0xabc123..."
+
+    UsernameValidation:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Submitted username
+          example: "pancake_trader"
+        valid:
+          type: boolean
+          description: Whether the username is valid
+          example: true
+
+    LeaderboardEntry:
+      type: object
+      properties:
+        rank:
+          type: integer
+          description: Player's rank on the leaderboard
+          example: 1
+        address:
+          type: string
+          description: Player's wallet address
+          example: "0x1234567890abcdef1234567890abcdef12345678"
+        volume:
+          type: number
+          format: float
+          description: Player's trading volume in USD
+          example: 5000000.00
+        teamId:
+          type: integer
+          description: Player's assigned team ID
+          example: 2
+
+    LeaderboardResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of participants
+          example: 10000
+        volume:
+          type: number
+          format: float
+          description: Combined trading volume in USD
+          example: 1000000000.00
+        data:
+          type: array
+          description: Array of leaderboard entries
+          items:
+            $ref: "#/components/schemas/LeaderboardEntry"
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: "User not found"
+        message:
+          type: string
+          description: Detailed error description
+          example: "No user found with the provided address"
