@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PancakeSwap Info Leaderboard Summary API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Summary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get top pairs summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pancakeswap.info/api/v2/summary"
+          },
+          "docs": "Returns data for the top ~1000 PancakeSwap pairs, sorted by reserves. Results are cached for 5 minutes.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

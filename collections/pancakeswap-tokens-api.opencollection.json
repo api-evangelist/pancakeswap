@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PancakeSwap Info Leaderboard Tokens API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pancakeswap.info/api/v2/tokens"
+          },
+          "docs": "Returns the tokens in the top ~1000 pairs on PancakeSwap, sorted by reserves. Results are cached for 5 minutes.\n"
+        },
+        {
+          "info": {
+            "name": "Get token by address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pancakeswap.info/api/v2/tokens/:address",
+            "params": [
+              {
+                "name": "address",
+                "value": "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+                "type": "path",
+                "description": "BEP20 token contract address (checksummed)"
+              }
+            ]
+          },
+          "docs": "Retrieves token information based on the provided BEP20 token address. Results are cached for 5 minutes.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

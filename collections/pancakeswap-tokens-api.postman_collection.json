@@ -1,0 +1,239 @@
+{
+  "item": [
+    {
+      "id": "0c3f79b9-56ab-467d-908e-795db72e7aa3",
+      "name": "Tokens",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ca8bf7f4-d5b2-43ab-a443-578c525a5768",
+          "name": "Get all tokens",
+          "request": {
+            "name": "Get all tokens",
+            "description": {
+              "content": "Returns the tokens in the top ~1000 pairs on PancakeSwap, sorted by reserves. Results are cached for 5 minutes.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "176bd365-6ae5-4805-9206-900398521e36",
+              "name": "Successful response with token data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"updated_at\": 1234567890,\n  \"data\": {\n    \"0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82\": {\n      \"name\": \"PancakeSwap Token\",\n      \"symbol\": \"CAKE\",\n      \"price\": \"5.32\",\n      \"price_BNB\": \"0.014\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e449860-9377-4b3c-bace-576a72118753",
+          "name": "Get token by address",
+          "request": {
+            "name": "Get token by address",
+            "description": {
+              "content": "Retrieves token information based on the provided BEP20 token address. Results are cached for 5 minutes.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "tokens",
+                ":address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) BEP20 token contract address (checksummed)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be5db1e3-0c8b-44f3-a4f3-a6e09777408f",
+              "name": "Successful response with token data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tokens",
+                    ":address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) BEP20 token contract address (checksummed)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"updated_at\": 1234567890,\n  \"data\": {\n    \"name\": \"PancakeSwap Token\",\n    \"symbol\": \"CAKE\",\n    \"price\": \"5.32\",\n    \"price_BNB\": \"0.014\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08528a1d-4229-45cd-8519-c8e5c820ef78",
+              "name": "Invalid token address",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "tokens",
+                    ":address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) BEP20 token contract address (checksummed)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid token address\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pancakeswap.info/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d4f65705-b6b2-44e7-962f-942c3aad6181",
+    "name": "PancakeSwap Info Leaderboard Tokens API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.\n\n\nContact Support:\n Name: PancakeSwap",
+      "type": "text/plain"
+    }
+  }
+}

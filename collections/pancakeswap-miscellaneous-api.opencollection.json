@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PancakeSwap Info Leaderboard Miscellaneous API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Miscellaneous",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get API version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pancakeswap.info/api/version"
+          },
+          "docs": "Retrieves the current API version."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

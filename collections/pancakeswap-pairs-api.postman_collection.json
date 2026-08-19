@@ -1,0 +1,104 @@
+{
+  "item": [
+    {
+      "id": "8f9047bd-6342-4660-be96-67f3b13b5aee",
+      "name": "Pairs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f91725e1-7b27-49ad-83a7-e1379256de0f",
+          "name": "Get top trading pairs",
+          "request": {
+            "name": "Get top trading pairs",
+            "description": {
+              "content": "Returns data for the top ~1000 PancakeSwap trading pairs, sorted by reserves. Results are cached for 5 minutes.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "pairs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "82e40690-a61c-46bb-9d0d-da7d92ba2c3d",
+              "name": "Successful response with pair data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "pairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"updated_at\": 1234567890,\n  \"data\": {\n    \"0xPAIRADDR\": {\n      \"pair_address\": \"0xPAIRADDR\",\n      \"base_name\": \"PancakeSwap Token\",\n      \"base_symbol\": \"CAKE\",\n      \"base_address\": \"0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82\",\n      \"quote_name\": \"Wrapped BNB\",\n      \"quote_symbol\": \"WBNB\",\n      \"quote_address\": \"0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c\",\n      \"price\": \"5.32\",\n      \"base_volume\": \"100000.00\",\n      \"quote_volume\": \"1400.00\",\n      \"liquidity\": \"1000000.00\",\n      \"liquidity_BNB\": \"2800.00\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pancakeswap.info/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a0774eb2-b58f-4258-beeb-02e7dd6bf967",
+    "name": "PancakeSwap Info Leaderboard Pairs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.\n\n\nContact Support:\n Name: PancakeSwap",
+      "type": "text/plain"
+    }
+  }
+}

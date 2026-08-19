@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PancakeSwap Info Leaderboard Users API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pancakeswap.info/api/users/:address",
+            "params": [
+              {
+                "name": "address",
+                "value": "0x1234567890abcdef1234567890abcdef12345678",
+                "type": "path",
+                "description": "User's wallet address (BEP20)"
+              }
+            ]
+          },
+          "docs": "Fetches user information and latest trading competition leaderboard statistics."
+        },
+        {
+          "info": {
+            "name": "Register a new user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pancakeswap.info/api/users/register",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new user with signature-verified address and username."
+        },
+        {
+          "info": {
+            "name": "Validate a username",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pancakeswap.info/api/users/valid/:username",
+            "params": [
+              {
+                "name": "username",
+                "value": "pancake_trader",
+                "type": "path",
+                "description": "Username to validate"
+              }
+            ]
+          },
+          "docs": "Validates username according to platform criteria."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

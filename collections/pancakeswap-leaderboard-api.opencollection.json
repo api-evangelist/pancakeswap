@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PancakeSwap Info Leaderboard API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Leaderboard",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get global leaderboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pancakeswap.info/api/leaderboard/global"
+          },
+          "docs": "Returns global leaderboard ranked by trading volume in descending order."
+        },
+        {
+          "info": {
+            "name": "Get team leaderboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pancakeswap.info/api/leaderboard/team/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "1",
+                "type": "path",
+                "description": "Team identifier"
+              }
+            ]
+          },
+          "docs": "Returns team-specific leaderboard ranked by trading volume in descending order."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

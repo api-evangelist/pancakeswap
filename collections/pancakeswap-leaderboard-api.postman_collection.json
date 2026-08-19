@@ -1,0 +1,239 @@
+{
+  "item": [
+    {
+      "id": "66479d3c-2d09-4912-b9dc-d11c13ceafd7",
+      "name": "Leaderboard",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b987251e-0405-4348-839f-33e5e9e1b808",
+          "name": "Get global leaderboard",
+          "request": {
+            "name": "Get global leaderboard",
+            "description": {
+              "content": "Returns global leaderboard ranked by trading volume in descending order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leaderboard",
+                "global"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "78b5dbbd-4617-4a19-8a3a-daccf9a0cb06",
+              "name": "Successful response with global leaderboard data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leaderboard",
+                    "global"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 10000,\n  \"volume\": 1000000000,\n  \"data\": [\n    {\n      \"rank\": 1,\n      \"address\": \"0x1234567890abcdef1234567890abcdef12345678\",\n      \"volume\": 5000000,\n      \"teamId\": 2\n    },\n    {\n      \"rank\": 1,\n      \"address\": \"0x1234567890abcdef1234567890abcdef12345678\",\n      \"volume\": 5000000,\n      \"teamId\": 2\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79763c94-05ae-4fac-a098-17ea3deb5615",
+          "name": "Get team leaderboard",
+          "request": {
+            "name": "Get team leaderboard",
+            "description": {
+              "content": "Returns team-specific leaderboard ranked by trading volume in descending order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "leaderboard",
+                "team",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Team identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "098bd33a-76b5-4b8c-bc25-2e6758247528",
+              "name": "Successful response with team leaderboard data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leaderboard",
+                    "team",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Team identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 10000,\n  \"volume\": 1000000000,\n  \"data\": [\n    {\n      \"rank\": 1,\n      \"address\": \"0x1234567890abcdef1234567890abcdef12345678\",\n      \"volume\": 5000000,\n      \"teamId\": 2\n    },\n    {\n      \"rank\": 1,\n      \"address\": \"0x1234567890abcdef1234567890abcdef12345678\",\n      \"volume\": 5000000,\n      \"teamId\": 2\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab9fdba1-f456-4646-ae35-2cc10d656e33",
+              "name": "Team not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "leaderboard",
+                    "team",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Team identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"User not found\",\n  \"message\": \"No user found with the provided address\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pancakeswap.info/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dc94a6aa-107f-4dd2-b237-61a8d1a6a659",
+    "name": "PancakeSwap Info Leaderboard API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.\n\n\nContact Support:\n Name: PancakeSwap",
+      "type": "text/plain"
+    }
+  }
+}
