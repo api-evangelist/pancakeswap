@@ -193,7 +193,8 @@ apis:
   description: The Miscellaneous API from PancakeSwap — 1 operation(s) for miscellaneous.
   humanURL: https://github.com/pancakeswap/pancake-info-api
   baseURL: https://api.pancakeswap.info
-  tags:
+  tags: []
+  tags_raw:
   - Miscellaneous
   properties:
   - type: OpenAPI
@@ -258,6 +259,8 @@ apis:
   humanURL: https://github.com/pancakeswap/pancake-info-api
   baseURL: https://api.pancakeswap.info
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
