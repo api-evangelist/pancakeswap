@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: PancakeSwap Info Leaderboard Summary API
+  title: PancakeSwap Info Summary API
   description: 'REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.
 
     '
@@ -44,6 +44,19 @@ paths:
                     liquidity_BNB: '44.68'
 components:
   schemas:
+    SummaryResponse:
+      type: object
+      properties:
+        updated_at:
+          type: integer
+          format: int64
+          description: Unix timestamp of the last data update
+          example: 1234567890
+        data:
+          type: object
+          description: Map of pair identifier to pair summary data
+          additionalProperties:
+            $ref: '#/components/schemas/PairSummaryData'
     PairSummaryData:
       type: object
       description: Summary data for a trading pair
@@ -68,16 +81,3 @@ components:
           type: string
           description: Total liquidity in BNB
           example: '44.68'
-    SummaryResponse:
-      type: object
-      properties:
-        updated_at:
-          type: integer
-          format: int64
-          description: Unix timestamp of the last data update
-          example: 1234567890
-        data:
-          type: object
-          description: Map of pair identifier to pair summary data
-          additionalProperties:
-            $ref: '#/components/schemas/PairSummaryData'

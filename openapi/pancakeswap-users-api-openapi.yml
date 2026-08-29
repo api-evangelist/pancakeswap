@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: PancakeSwap Info Leaderboard Users API
-  description: 'REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.
+  title: PancakeSwap Profile Users API
+  description: 'REST API for PancakeSwap user profile data including usernames, leaderboard rankings by trading volume, team competitions, and profile registration. Supports CORS for cross-origin access.
 
     '
-  version: '2.0'
+  version: '1.0'
   contact:
     name: PancakeSwap
     url: https://pancakeswap.finance
@@ -12,8 +12,8 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 servers:
-- url: https://api.pancakeswap.info/api
-  description: PancakeSwap Info API
+- url: https://profile.pancakeswap.com/api
+  description: PancakeSwap Profile API
 tags:
 - name: Users
 paths:
@@ -111,28 +111,6 @@ paths:
                 valid: true
 components:
   schemas:
-    RegisterRequest:
-      type: object
-      required:
-      - address
-      - username
-      - signature
-      properties:
-        address:
-          type: string
-          description: User's wallet address
-          pattern: ^0x[a-fA-F0-9]{40}$
-          example: '0x1234567890abcdef1234567890abcdef12345678'
-        username:
-          type: string
-          description: Desired username
-          minLength: 3
-          maxLength: 15
-          example: pancake_trader
-        signature:
-          type: string
-          description: Cryptographic signature for address verification
-          example: 0xabc123...
     ErrorResponse:
       type: object
       properties:
@@ -144,6 +122,29 @@ components:
           type: string
           description: Detailed error description
           example: No user found with the provided address
+    UserBase:
+      type: object
+      properties:
+        address:
+          type: string
+          description: User's wallet address
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        username:
+          type: string
+          description: User's chosen username
+          example: pancake_trader
+        created_at:
+          type: string
+          format: date-time
+          description: Account creation timestamp
+          example: '2023-01-15T12:00:00Z'
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Last update timestamp
+          example: null
     LeaderboardStats:
       type: object
       description: User's leaderboard statistics
@@ -166,35 +167,6 @@ components:
           format: float
           description: Volume needed to reach the next rank in USD
           example: 200000.0
-    UserBase:
-      type: object
-      properties:
-        address:
-          type: string
-          description: User's wallet address
-          example: '0x1234567890abcdef1234567890abcdef12345678'
-        username:
-          type: string
-          description: User's chosen username
-          example: pancake_trader
-        created_at:
-          type: string
-          format: date-time
-          description: Account creation timestamp
-          example: '2023-01-15T12:00:00Z'
-        updated_at:
-          type: string
-          format: date-time
-          nullable: true
-          description: Last update timestamp
-          example: null
-    UserProfile:
-      allOf:
-      - $ref: '#/components/schemas/UserBase'
-      - type: object
-        properties:
-          leaderboard:
-            $ref: '#/components/schemas/LeaderboardStats'
     UsernameValidation:
       type: object
       properties:
@@ -206,3 +178,32 @@ components:
           type: boolean
           description: Whether the username is valid
           example: true
+    UserProfile:
+      allOf:
+      - $ref: '#/components/schemas/UserBase'
+      - type: object
+        properties:
+          leaderboard:
+            $ref: '#/components/schemas/LeaderboardStats'
+    RegisterRequest:
+      type: object
+      required:
+      - address
+      - username
+      - signature
+      properties:
+        address:
+          type: string
+          description: User's wallet address
+          pattern: ^0x[a-fA-F0-9]{40}$
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        username:
+          type: string
+          description: Desired username
+          minLength: 3
+          maxLength: 15
+          example: pancake_trader
+        signature:
+          type: string
+          description: Cryptographic signature for address verification
+          example: 0xabc123...

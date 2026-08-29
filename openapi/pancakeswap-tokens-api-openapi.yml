@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: PancakeSwap Info Leaderboard Tokens API
+  title: PancakeSwap Info Tokens API
   description: 'REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.
 
     '
@@ -81,19 +81,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    TokensResponse:
-      type: object
-      properties:
-        updated_at:
-          type: integer
-          format: int64
-          description: Unix timestamp of the last data update
-          example: 1234567890
-        data:
-          type: object
-          description: Map of token address to token data
-          additionalProperties:
-            $ref: '#/components/schemas/TokenData'
     TokenData:
       type: object
       description: Token price and metadata
@@ -131,3 +118,16 @@ components:
           type: string
           description: Error message
           example: Invalid token address
+    TokensResponse:
+      type: object
+      properties:
+        updated_at:
+          type: integer
+          format: int64
+          description: Unix timestamp of the last data update
+          example: 1234567890
+        data:
+          type: object
+          description: Map of token address to token data
+          additionalProperties:
+            $ref: '#/components/schemas/TokenData'

@@ -1,24 +1,37 @@
 {
   "provider": "pancakeswap",
   "sources": [
-    "pancakeswap-leaderboard-api-openapi.yml",
-    "pancakeswap-miscellaneous-api-openapi.yml",
-    "pancakeswap-pairs-api-openapi.yml",
-    "pancakeswap-summary-api-openapi.yml",
-    "pancakeswap-tokens-api-openapi.yml",
-    "pancakeswap-users-api-openapi.yml"
+    "_original/openapi.yml",
+    "_original/profile-openapi.yml"
   ],
   "outputs": [
-    "pancakeswap-leaderboard-api-openapi.yml",
-    "pancakeswap-miscellaneous-api-openapi.yml",
     "pancakeswap-pairs-api-openapi.yml",
     "pancakeswap-summary-api-openapi.yml",
     "pancakeswap-tokens-api-openapi.yml",
+    "pancakeswap-leaderboard-api-openapi.yml",
+    "pancakeswap-miscellaneous-api-openapi.yml",
     "pancakeswap-users-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "openapi.yml: declared missing tag: Pairs",
+    "openapi.yml: declared missing tag: Summary",
+    "openapi.yml: declared missing tag: Tokens",
+    "profile-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "profile-openapi.yml: declared missing tag: Leaderboard",
+    "profile-openapi.yml: declared missing tag: Miscellaneous",
+    "profile-openapi.yml: declared missing tag: Users"
+  ],
+  "skipped": [
+    "pancakeswap-leaderboard-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pancakeswap-miscellaneous-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pancakeswap-pairs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pancakeswap-summary-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pancakeswap-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pancakeswap-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

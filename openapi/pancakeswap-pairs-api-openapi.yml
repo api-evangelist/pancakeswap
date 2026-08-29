@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: PancakeSwap Info Leaderboard Pairs API
+  title: PancakeSwap Info Pairs API
   description: 'REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.
 
     '
@@ -51,19 +51,6 @@ paths:
                     liquidity_BNB: '2800.00'
 components:
   schemas:
-    PairsResponse:
-      type: object
-      properties:
-        updated_at:
-          type: integer
-          format: int64
-          description: Unix timestamp of the last data update
-          example: 1234567890
-        data:
-          type: object
-          description: Map of pair address to pair data
-          additionalProperties:
-            $ref: '#/components/schemas/PairData'
     PairData:
       type: object
       description: Detailed data for a trading pair
@@ -116,3 +103,16 @@ components:
           type: string
           description: Total liquidity in BNB
           example: '2800.00'
+    PairsResponse:
+      type: object
+      properties:
+        updated_at:
+          type: integer
+          format: int64
+          description: Unix timestamp of the last data update
+          example: 1234567890
+        data:
+          type: object
+          description: Map of pair address to pair data
+          additionalProperties:
+            $ref: '#/components/schemas/PairData'

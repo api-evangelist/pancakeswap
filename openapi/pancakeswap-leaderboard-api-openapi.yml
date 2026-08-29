@@ -1,10 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: PancakeSwap Info Leaderboard API
-  description: 'REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.
+  title: PancakeSwap Profile Leaderboard API
+  description: 'REST API for PancakeSwap user profile data including usernames, leaderboard rankings by trading volume, team competitions, and profile registration. Supports CORS for cross-origin access.
 
     '
-  version: '2.0'
+  version: '1.0'
   contact:
     name: PancakeSwap
     url: https://pancakeswap.finance
@@ -12,8 +12,8 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 servers:
-- url: https://api.pancakeswap.info/api
-  description: PancakeSwap Info API
+- url: https://profile.pancakeswap.com/api
+  description: PancakeSwap Profile API
 tags:
 - name: Leaderboard
 paths:
@@ -62,17 +62,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-          example: User not found
-        message:
-          type: string
-          description: Detailed error description
-          example: No user found with the provided address
     LeaderboardEntry:
       type: object
       properties:
@@ -110,3 +99,14 @@ components:
           description: Array of leaderboard entries
           items:
             $ref: '#/components/schemas/LeaderboardEntry'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: User not found
+        message:
+          type: string
+          description: Detailed error description
+          example: No user found with the provided address
