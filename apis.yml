@@ -191,6 +191,8 @@ apis:
   humanURL: https://github.com/pancakeswap/pancake-info-api
   baseURL: https://api.pancakeswap.info
   tags:
+  - Leaderboards
+  tags_raw:
   - Leaderboard
   properties:
   - type: OpenAPI
