@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: PancakeSwap Info Tokens API
-  description: 'REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.
-
-    '
+  description: REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.
   version: '2.0'
   contact:
     name: PancakeSwap
@@ -21,9 +19,7 @@ paths:
     get:
       operationId: getTokens
       summary: Get all tokens
-      description: 'Returns the tokens in the top ~1000 pairs on PancakeSwap, sorted by reserves. Results are cached for 5 minutes.
-
-        '
+      description: Returns the tokens in the top ~1000 pairs on PancakeSwap, sorted by reserves. Results are cached for 5 minutes.
       tags:
       - Tokens
       responses:
@@ -45,9 +41,7 @@ paths:
     get:
       operationId: getToken
       summary: Get token by address
-      description: 'Retrieves token information based on the provided BEP20 token address. Results are cached for 5 minutes.
-
-        '
+      description: Retrieves token information based on the provided BEP20 token address. Results are cached for 5 minutes.
       tags:
       - Tokens
       parameters:
@@ -81,6 +75,13 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: Invalid token address
     TokenData:
       type: object
       description: Token price and metadata
@@ -111,13 +112,6 @@ components:
           example: 1234567890
         data:
           $ref: '#/components/schemas/TokenData'
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-          example: Invalid token address
     TokensResponse:
       type: object
       properties:

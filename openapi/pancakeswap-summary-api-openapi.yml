@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: PancakeSwap Info Summary API
-  description: 'REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.
-
-    '
+  description: REST API providing on-chain data for the top ~1000 PancakeSwap trading pairs, tokens, and market summaries sourced from underlying subgraphs. Used by market aggregators such as CoinMarketCap to surface liquidity and volume data. Responses are cached for 5 minutes.
   version: '2.0'
   contact:
     name: PancakeSwap
@@ -21,9 +19,7 @@ paths:
     get:
       operationId: getSummary
       summary: Get top pairs summary
-      description: 'Returns data for the top ~1000 PancakeSwap pairs, sorted by reserves. Results are cached for 5 minutes.
-
-        '
+      description: Returns data for the top ~1000 PancakeSwap pairs, sorted by reserves. Results are cached for 5 minutes.
       tags:
       - Summary
       responses:

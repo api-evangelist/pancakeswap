@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: PancakeSwap Profile Users API
-  description: 'REST API for PancakeSwap user profile data including usernames, leaderboard rankings by trading volume, team competitions, and profile registration. Supports CORS for cross-origin access.
-
-    '
+  description: REST API for PancakeSwap user profile data including usernames, leaderboard rankings by trading volume, team competitions, and profile registration. Supports CORS for cross-origin access.
   version: '1.0'
   contact:
     name: PancakeSwap
@@ -111,6 +109,46 @@ paths:
                 valid: true
 components:
   schemas:
+    UsernameValidation:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Submitted username
+          example: pancake_trader
+        valid:
+          type: boolean
+          description: Whether the username is valid
+          example: true
+    UserProfile:
+      allOf:
+      - $ref: '#/components/schemas/UserBase'
+      - type: object
+        properties:
+          leaderboard:
+            $ref: '#/components/schemas/LeaderboardStats'
+    LeaderboardStats:
+      type: object
+      description: User's leaderboard statistics
+      properties:
+        global:
+          type: integer
+          description: Global rank of the user
+          example: 42
+        team:
+          type: integer
+          description: Team rank of the user
+          example: 5
+        volume:
+          type: number
+          format: float
+          description: Trading volume in USD
+          example: 150000.5
+        next_rank:
+          type: number
+          format: float
+          description: Volume needed to reach the next rank in USD
+          example: 200000.0
     ErrorResponse:
       type: object
       properties:
@@ -145,46 +183,6 @@ components:
           format: date-time
           description: Last update timestamp
           example: null
-    LeaderboardStats:
-      type: object
-      description: User's leaderboard statistics
-      properties:
-        global:
-          type: integer
-          description: Global rank of the user
-          example: 42
-        team:
-          type: integer
-          description: Team rank of the user
-          example: 5
-        volume:
-          type: number
-          format: float
-          description: Trading volume in USD
-          example: 150000.5
-        next_rank:
-          type: number
-          format: float
-          description: Volume needed to reach the next rank in USD
-          example: 200000.0
-    UsernameValidation:
-      type: object
-      properties:
-        username:
-          type: string
-          description: Submitted username
-          example: pancake_trader
-        valid:
-          type: boolean
-          description: Whether the username is valid
-          example: true
-    UserProfile:
-      allOf:
-      - $ref: '#/components/schemas/UserBase'
-      - type: object
-        properties:
-          leaderboard:
-            $ref: '#/components/schemas/LeaderboardStats'
     RegisterRequest:
       type: object
       required:

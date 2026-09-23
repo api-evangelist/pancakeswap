@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: PancakeSwap Profile Leaderboard API
-  description: 'REST API for PancakeSwap user profile data including usernames, leaderboard rankings by trading volume, team competitions, and profile registration. Supports CORS for cross-origin access.
-
-    '
+  description: REST API for PancakeSwap user profile data including usernames, leaderboard rankings by trading volume, team competitions, and profile registration. Supports CORS for cross-origin access.
   version: '1.0'
   contact:
     name: PancakeSwap
@@ -62,6 +60,34 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: User not found
+        message:
+          type: string
+          description: Detailed error description
+          example: No user found with the provided address
+    LeaderboardResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of participants
+          example: 10000
+        volume:
+          type: number
+          format: float
+          description: Combined trading volume in USD
+          example: 1000000000.0
+        data:
+          type: array
+          description: Array of leaderboard entries
+          items:
+            $ref: '#/components/schemas/LeaderboardEntry'
     LeaderboardEntry:
       type: object
       properties:
@@ -82,31 +108,3 @@ components:
           type: integer
           description: Player's assigned team ID
           example: 2
-    LeaderboardResponse:
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of participants
-          example: 10000
-        volume:
-          type: number
-          format: float
-          description: Combined trading volume in USD
-          example: 1000000000.0
-        data:
-          type: array
-          description: Array of leaderboard entries
-          items:
-            $ref: '#/components/schemas/LeaderboardEntry'
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-          example: User not found
-        message:
-          type: string
-          description: Detailed error description
-          example: No user found with the provided address

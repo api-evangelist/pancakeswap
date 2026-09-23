@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: PancakeSwap Profile Miscellaneous API
-  description: 'REST API for PancakeSwap user profile data including usernames, leaderboard rankings by trading volume, team competitions, and profile registration. Supports CORS for cross-origin access.
-
-    '
+  description: REST API for PancakeSwap user profile data including usernames, leaderboard rankings by trading volume, team competitions, and profile registration. Supports CORS for cross-origin access.
   version: '1.0'
   contact:
     name: PancakeSwap

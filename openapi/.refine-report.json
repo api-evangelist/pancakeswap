@@ -24,7 +24,8 @@
     "profile-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "profile-openapi.yml: declared missing tag: Leaderboard",
     "profile-openapi.yml: declared missing tag: Miscellaneous",
-    "profile-openapi.yml: declared missing tag: Users"
+    "profile-openapi.yml: declared missing tag: Users",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "pancakeswap-leaderboard-api-openapi.yml: previously refined output, superseded by openapi/_original/",
