@@ -47,6 +47,19 @@ paths:
                     liquidity_BNB: '2800.00'
 components:
   schemas:
+    PairsResponse:
+      type: object
+      properties:
+        updated_at:
+          type: integer
+          format: int64
+          description: Unix timestamp of the last data update
+          example: 1234567890
+        data:
+          type: object
+          description: Map of pair address to pair data
+          additionalProperties:
+            $ref: '#/components/schemas/PairData'
     PairData:
       type: object
       description: Detailed data for a trading pair
@@ -99,16 +112,3 @@ components:
           type: string
           description: Total liquidity in BNB
           example: '2800.00'
-    PairsResponse:
-      type: object
-      properties:
-        updated_at:
-          type: integer
-          format: int64
-          description: Unix timestamp of the last data update
-          example: 1234567890
-        data:
-          type: object
-          description: Map of pair address to pair data
-          additionalProperties:
-            $ref: '#/components/schemas/PairData'

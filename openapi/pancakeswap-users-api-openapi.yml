@@ -109,6 +109,29 @@ paths:
                 valid: true
 components:
   schemas:
+    UserBase:
+      type: object
+      properties:
+        address:
+          type: string
+          description: User's wallet address
+          example: '0x1234567890abcdef1234567890abcdef12345678'
+        username:
+          type: string
+          description: User's chosen username
+          example: pancake_trader
+        created_at:
+          type: string
+          format: date-time
+          description: Account creation timestamp
+          example: '2023-01-15T12:00:00Z'
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Last update timestamp
+          example: null
     UsernameValidation:
       type: object
       properties:
@@ -120,13 +143,6 @@ components:
           type: boolean
           description: Whether the username is valid
           example: true
-    UserProfile:
-      allOf:
-      - $ref: '#/components/schemas/UserBase'
-      - type: object
-        properties:
-          leaderboard:
-            $ref: '#/components/schemas/LeaderboardStats'
     LeaderboardStats:
       type: object
       description: User's leaderboard statistics
@@ -160,29 +176,6 @@ components:
           type: string
           description: Detailed error description
           example: No user found with the provided address
-    UserBase:
-      type: object
-      properties:
-        address:
-          type: string
-          description: User's wallet address
-          example: '0x1234567890abcdef1234567890abcdef12345678'
-        username:
-          type: string
-          description: User's chosen username
-          example: pancake_trader
-        created_at:
-          type: string
-          format: date-time
-          description: Account creation timestamp
-          example: '2023-01-15T12:00:00Z'
-        updated_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: Last update timestamp
-          example: null
     RegisterRequest:
       type: object
       required:
@@ -205,3 +198,10 @@ components:
           type: string
           description: Cryptographic signature for address verification
           example: 0xabc123...
+    UserProfile:
+      allOf:
+      - $ref: '#/components/schemas/UserBase'
+      - type: object
+        properties:
+          leaderboard:
+            $ref: '#/components/schemas/LeaderboardStats'

@@ -102,16 +102,6 @@ components:
           type: string
           description: Token price in BNB
           example: '0.014'
-    SingleTokenResponse:
-      type: object
-      properties:
-        updated_at:
-          type: integer
-          format: int64
-          description: Unix timestamp of the last data update
-          example: 1234567890
-        data:
-          $ref: '#/components/schemas/TokenData'
     TokensResponse:
       type: object
       properties:
@@ -125,3 +115,13 @@ components:
           description: Map of token address to token data
           additionalProperties:
             $ref: '#/components/schemas/TokenData'
+    SingleTokenResponse:
+      type: object
+      properties:
+        updated_at:
+          type: integer
+          format: int64
+          description: Unix timestamp of the last data update
+          example: 1234567890
+        data:
+          $ref: '#/components/schemas/TokenData'
