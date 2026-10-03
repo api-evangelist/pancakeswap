@@ -60,17 +60,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-          example: User not found
-        message:
-          type: string
-          description: Detailed error description
-          example: No user found with the provided address
     LeaderboardEntry:
       type: object
       properties:
@@ -108,3 +97,14 @@ components:
           description: Array of leaderboard entries
           items:
             $ref: '#/components/schemas/LeaderboardEntry'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: User not found
+        message:
+          type: string
+          description: Detailed error description
+          example: No user found with the provided address
