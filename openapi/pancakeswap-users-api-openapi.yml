@@ -131,17 +131,24 @@ components:
           format: float
           description: Volume needed to reach the next rank in USD
           example: 200000.0
-    UsernameValidation:
+    ErrorResponse:
       type: object
       properties:
-        username:
+        error:
           type: string
-          description: Submitted username
-          example: pancake_trader
-        valid:
-          type: boolean
-          description: Whether the username is valid
-          example: true
+          description: Error message
+          example: User not found
+        message:
+          type: string
+          description: Detailed error description
+          example: No user found with the provided address
+    UserProfile:
+      allOf:
+      - $ref: '#/components/schemas/UserBase'
+      - type: object
+        properties:
+          leaderboard:
+            $ref: '#/components/schemas/LeaderboardStats'
     RegisterRequest:
       type: object
       required:
@@ -164,6 +171,17 @@ components:
           type: string
           description: Cryptographic signature for address verification
           example: 0xabc123...
+    UsernameValidation:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Submitted username
+          example: pancake_trader
+        valid:
+          type: boolean
+          description: Whether the username is valid
+          example: true
     UserBase:
       type: object
       properties:
@@ -187,21 +205,3 @@ components:
           format: date-time
           description: Last update timestamp
           example: null
-    UserProfile:
-      allOf:
-      - $ref: '#/components/schemas/UserBase'
-      - type: object
-        properties:
-          leaderboard:
-            $ref: '#/components/schemas/LeaderboardStats'
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-          example: User not found
-        message:
-          type: string
-          description: Detailed error description
-          example: No user found with the provided address

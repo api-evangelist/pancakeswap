@@ -75,7 +75,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    SingleTokenResponse:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: Invalid token address
+    TokensResponse:
       type: object
       properties:
         updated_at:
@@ -84,7 +91,10 @@ components:
           description: Unix timestamp of the last data update
           example: 1234567890
         data:
-          $ref: '#/components/schemas/TokenData'
+          type: object
+          description: Map of token address to token data
+          additionalProperties:
+            $ref: '#/components/schemas/TokenData'
     TokenData:
       type: object
       description: Token price and metadata
@@ -105,7 +115,7 @@ components:
           type: string
           description: Token price in BNB
           example: '0.014'
-    TokensResponse:
+    SingleTokenResponse:
       type: object
       properties:
         updated_at:
@@ -114,14 +124,4 @@ components:
           description: Unix timestamp of the last data update
           example: 1234567890
         data:
-          type: object
-          description: Map of token address to token data
-          additionalProperties:
-            $ref: '#/components/schemas/TokenData'
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-          example: Invalid token address
+          $ref: '#/components/schemas/TokenData'
