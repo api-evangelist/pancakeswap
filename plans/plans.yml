@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: PancakeSwap API Plans
 description: >
   PancakeSwap provides its core REST and GraphQL APIs free of charge with no
@@ -76,3 +80,41 @@ plans:
       - PancakeSwap Exchange V2 GraphQL on BSC
       - High availability infrastructure
       - Enterprise SLA options
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - metered
+  units:
+  - period
+  - request
+  plans:
+  - name: Free (Info API v2)
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - period
+    periods: []
+  - name: Free (Profile API)
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - period
+    periods: []
+  - name: The Graph Decentralized Network (GRT)
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - request
+    periods: []
+  - name: NodeReal MegaNode (BSC Subgraph)
+    access: other
+    model: unstated
+    model_how: derived
+    units:
+    - period
+    periods: []
