@@ -1,0 +1,18 @@
+edges:
+- partner_name: CoinGecko
+  partner: coingecko
+  partner_match: aggregator
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://api.coingecko.com/api/v3/exchanges/pancakeswap-v3-bsc
+  matched_by: domain:pancakeswap.finance
+  coingecko_id: pancakeswap-v3-bsc
+  trust_score: 2
+  detected_by: sweep-crypto.py
+  first_seen: '2026-10-13'
+generated: '2026-10-13'
+method: searched
+checked:
+- https://api.coingecko.com/api/v3/exchanges
