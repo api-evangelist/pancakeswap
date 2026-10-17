@@ -75,13 +75,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error message
-          example: Invalid token address
     TokensResponse:
       type: object
       properties:
@@ -95,6 +88,13 @@ components:
           description: Map of token address to token data
           additionalProperties:
             $ref: '#/components/schemas/TokenData'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: Invalid token address
     TokenData:
       type: object
       description: Token price and metadata
